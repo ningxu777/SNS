@@ -1,0 +1,174 @@
+/**
+ *Description: the main js for ppt of web;
+ *Author: ning.xu3;
+ *Date: 2014-03-31;
+*/
+
+/****reset****/
+*{
+	margin: 0;
+	padding: 0;
+	font: 18px "微软雅黑",Arial,Times;
+}
+ul,li{
+	list-style: none;
+}
+.red{
+	background: #dd4b39;
+}
+.blue{
+	background: #3366cc;
+}
+
+/****wrap****/
+body{
+	
+}
+.wrap{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	margin: 0 auto;
+	background: #fff;
+}
+
+/****header****/
+.header{
+	width: 100%;
+	height: 45px;
+	background-color: #f1f1f1;
+	display: none;
+}
+
+/****main****/
+.main{
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+	position: absolute;
+}
+.left{
+	width: 20%;
+	height: 100%;
+	background: #f1f1f1;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.menu{
+	width: 80%;
+	height: auto;
+	overflow: hidden;
+	margin: 80px auto;
+	color: #333;
+}
+.menu-li{
+	border-bottom: 1px solid #ebebeb;
+}
+.menu-li-title{
+	line-height: 30px;
+}
+.menu-li-li{
+	line-height: 30px;
+	font-size: 16px;
+	margin-left: 20px;
+}
+.right{
+	width: 80%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 20%;
+	overflow: auto;
+}
+.content{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.content-box{
+	width: 800px;
+	height: 700px;
+	margin: 70px auto 0;
+	overflow: auto;
+}
+.content-title{
+	width: 100%;
+	float: left;
+	font-size: 30px;
+	color: #333;
+	line-height: 70px;
+	border-bottom: 2px solid #ebebeb;
+}
+.content-text{
+	width: 100%;
+	float: left;
+	color: #666;
+	margin-top: 20px;
+}
+.content-li{
+	line-height: 50px;
+}
+.content-li-icon{
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	margin-right: 15px;
+	border-radius: 7.5px;
+}
+.content-exam{
+	margin-top: 15px;
+}
+.content-input{
+	width: 99%;
+	height: 30px;
+	margin: 15px 0;
+	color: #999;
+	font-size: 14px;
+}
+.content-textarea{
+	width: 99%;
+	height: 120px;
+	margin: 15px 0;
+	color: #999;
+	font-size: 14px;
+	line-height: 20px;
+}
+.content-editDiv{
+	width: 99%;
+	height: 120px;
+	border: 1px solid #aaa;
+	margin: 15px 0;
+	color: #999;
+	font-size: 14px;
+	line-height: 20px;
+}
+.content-bold{
+	font-weight: bold;
+	line-height: 40px;
+}
+.content-pic img{
+	width: 100%;
+}
+
+
+/****footer****/
+.footer{
+	display: none;
+}
+
+/****floatBar****/
+.floatBar{
+	width: 70px;
+	height: 70px;
+	position: absolute;
+	top: 50px;
+	right: 50px;
+	cursor: pointer;
+	border-radius: 35px;
+	background: #dd4b39;
+	line-height: 70px;
+	text-align: center;
+	color: #fff;
+}
