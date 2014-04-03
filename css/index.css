@@ -82,7 +82,7 @@ body{
 	position: absolute;
 	top: 0;
 	left: 20%;
-	overflow: auto;
+	overflow: hidden;
 }
 .content{
 	width: 100%;
@@ -154,10 +154,10 @@ body{
 	width: 100%;
 }
 .content-code{
-	width: 356px;
-	height: 300px;
+	width: 968px;
+	height: auto;
 	display: block;
-	float: right;
+	float: left;
 	border: 1px solid #aaa;
 	padding: 15px;
 	position: relative;

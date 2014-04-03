@@ -1,0 +1,9 @@
+/****全屏切换****/
+@-webkit-keyframes qian /* Safari 和 Chrome */
+{
+	from {width: 100%;}
+	to {width: 0;}
+}
+.changeColor{
+	-webkit-animation: qian 2s;
+}

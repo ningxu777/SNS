@@ -6,12 +6,13 @@
 	<meta name="description" content="自用web版PPT模板">
 	<title>web编辑器TinyMCE应用及原理</title>
 	<link href="css/index.css" type="text/css" rel="stylesheet">
+	<link href="css/animate.css" type="text/css" rel="stylesheet">
 	<script src="js/jquery-1.11.0.js" type="text/javascript"></script>
 	<script src="js/tinymce/tinymce.min.js" type="text/javascript"></script>
 	<script>
 		tinymce.init({
 			selector: '.content-tinyarea', 
-			width: '400px',
+			width: '800px',
 			height: '200px'
 		});
 
@@ -52,7 +53,7 @@
 				</div>
 			</div>
 			<div class="right">
-				<div class="content">
+				<div class="content blue">
 					<div class="content-box">
 						<h1 class="content-title">目录</h1>
 						<div class="content-text">
@@ -184,8 +185,15 @@
 									<div class="code-box">
 										<xmp>tinymce.init({</xmp>
 										<xmp>	selector: '.content-tinyarea',</xmp>
-										<xmp>	width: '400px',</xmp>
-										<xmp>	height: '300px'</xmp>
+										<xmp>	theme: 'modern',</xmp>
+										<xmp>	width: '998px',</xmp>
+										<xmp>	height: '300px',</xmp>
+										<xmp>	plugins: [</xmp>
+								        <xmp>      "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",</xmp>
+								        <xmp>      "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",</xmp>
+								        <xmp>      "save table contextmenu directionality emoticons template paste textcolor"</xmp>
+								   		<xmp>		],</xmp>
+								   		<xmp>	toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",</xmp>
 										<xmp>});</xmp>
 									</div>
 									<div class="code-run blue">运行代码</div>

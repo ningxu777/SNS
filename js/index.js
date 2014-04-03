@@ -27,6 +27,16 @@ $(function(){
 				}else{
 					This.smaller();
 				}
+
+				//全屏切换
+	$('.content').on('click', function(){
+		$(this).addClass('changeColor');
+		setTimeout(function(){
+			console.log(1);
+			$(this).hide();
+			//$(this).removeClass('.changeColor');
+		},2020);
+	});
 			});
 		},
 
@@ -71,4 +81,6 @@ $(function(){
 		}
 	};
 	runCode.init();
+
+
 })
