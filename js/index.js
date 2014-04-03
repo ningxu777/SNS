@@ -28,15 +28,7 @@ $(function(){
 					This.smaller();
 				}
 
-				//全屏切换
-	$('.content').on('click', function(){
-		$(this).addClass('changeColor');
-		setTimeout(function(){
-			console.log(1);
-			$(this).hide();
-			//$(this).removeClass('.changeColor');
-		},2020);
-	});
+				
 			});
 		},
 
@@ -82,5 +74,54 @@ $(function(){
 	};
 	runCode.init();
 
+	//全屏切换
+	var page = 1;
+	var toTop = function(){
+		if(page == $('.content').length){
+			return;
+		}
+		var This = $('.page'+page);
+		This.addClass('pt-page-moveToTop');
+		This.next().addClass('pt-page-moveFromBottom');
+		This.next().addClass('pt-page-current');
+		setTimeout(function(){
+			This.removeClass('pt-page-moveToTop');
+			This.removeClass('pt-page-current');
+			This.next().removeClass('pt-page-moveFromBottom');
+		},700);
+		page++;
+	};
+	var toBottom = function(){
+		if(page == 1){
+			return;
+		}
+		var This = $('.page'+page);
+		This.addClass('pt-page-moveToBottom');
+		This.prev().addClass('pt-page-moveFromTop');
+		This.prev().addClass('pt-page-current');
+		setTimeout(function(){
+			This.removeClass('pt-page-moveToBottom');
+			This.removeClass('pt-page-current');
+			This.prev().removeClass('pt-page-moveFromTop');
+		},700);
+		page--;
+	};
 
+	$(document).bind('keydown', function(e){
+		console.log(e.keyCode);
+		var keyCode = e.keyCode;
+		if(keyCode == 27){
+			resize.smaller();
+		}else if(keyCode == 122){
+			resize.bigger();
+		}else if(keyCode == 38){ //shang
+			toBottom();
+		}else if(keyCode == 40){ //xia	
+			toTop();
+		}else if(keyCode == 37){ //zuo	
+
+		}else if(keyCode == 39){ //you
+
+		}
+	});
 })
