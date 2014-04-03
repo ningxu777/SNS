@@ -7,14 +7,15 @@ $(function(){
 		right: $('.right'),
 		
 		bigger: function(){
-			this.left.animate({left: "-20%"},100);
-			this.right.animate({left: "0",width: "100%"},100);
+			this.left.animate({left: "-20%"},200);
+			this.right.animate({left: "0",width: "100%"},200);
+			this.floatBar.html('退出');
 		},
 
 		smaller: function(){
-			this.right.animate({left: "20%",width: "80%"},100);
-			this.left.animate({left: "0"},100);
-			
+			this.right.animate({left: "20%",width: "80%"},200);
+			this.left.animate({left: "0"},200);
+			this.floatBar.html('全屏');
 		},
 
 		bindEvent: function(){
@@ -34,4 +35,40 @@ $(function(){
 		}
 	};
 	resize.init();
+
+	//运行代码
+	var runCode = {
+
+		runBtn: $('.code-run'),
+
+		run: function(){
+			var code = this.runBtn.siblings('.code-box').html();
+			code = code.replace(/\<xmp\>/g,'').replace(/\<\/xmp\>/g,'').replace(/<br>/g,'');
+			console.log(code);
+			
+			//tinymce.activeEditor = tinyMCE.activeEditor = null;
+			$('.mce-tinymce').remove();
+			$('.content-tinyarea').attr('id','');
+			eval(code);
+			var interval = setInterval(function(){
+				if($('.mce-tinymce').length){
+					$('.mce-tinymce').show();
+					clearInterval(interval);
+				}
+			},50);
+			
+		},
+
+		bindEvent: function(){
+			var This = this;
+			This.runBtn.on('click', function(){
+				This.run();
+			});
+		},
+
+		init: function(){
+			this.bindEvent();
+		}
+	};
+	runCode.init();
 })

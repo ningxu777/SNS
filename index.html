@@ -7,6 +7,15 @@
 	<title>web编辑器TinyMCE应用及原理</title>
 	<link href="css/index.css" type="text/css" rel="stylesheet">
 	<script src="js/jquery-1.11.0.js" type="text/javascript"></script>
+	<script src="js/tinymce/tinymce.min.js" type="text/javascript"></script>
+	<script>
+		tinymce.init({
+			selector: '.content-tinyarea', 
+			width: '400px',
+			height: '200px'
+		});
+
+	</script>
 	<script src="js/index.js" type="text/javascript"></script>
 </head>
 <body>
@@ -33,7 +42,9 @@
 								<li class="menu-li-li">自定义插件开发</li>
 							</ul>
 						</li>
-						
+						<li class="menu-li">
+							<div class="menu-li-title">同类产品对比</div>
+						</li>
 						<li class="menu-li">
 							<div class="menu-li-title">总结</div>
 						</li>
@@ -135,11 +146,52 @@
 					<div class="content-box">
 						<h1 class="content-title">三、TinyMCE的使用</h1>
 						<div class="content-text">
-							<p class="content-intro">网站上常见的用于编辑文字的有以下HTML标签</p>
+							<p class="content-intro">1、初始化配置</p>
 							<p class="content-intro">
-								<xmp><input type="text" name=""></xmp>
-								<input class="content-input" type="text" value="input标签功能比较简单，允许用户输入一行文字。一般不对其进行扩展。">
+								下载TinyMCE文件包：<a href="http://www.tinymce.com/" target="_blank">http://www.tinymce.com/</a>
 							</p>
+							<p class="content-intro">
+								head标签内放入以下代码：<xmp><script type="text/javascript" src="./tinymce/tinymce.min.js"></script></xmp>
+							</p>
+							<p class="content-intro">
+								调用TinyMCE的初始化方法，配置参数即可。下面是最简单的配置方式。
+							</p>
+
+							<div class="content-intro">
+								
+							</div>
+							
+						</div>
+						<div class="content-text">
+							<p class="content-intro">2、自定义皮肤</p>
+							<p class="content-intro">
+								下载TinyMCE文件包：<a href="http://www.tinymce.com/" target="_blank">http://www.tinymce.com/</a>
+							</p>
+							<p class="content-intro">
+								head标签内放入以下代码：<xmp><script type="text/javascript" src="./tinymce/tinymce.min.js"></script></xmp>
+							</p>
+							<p class="content-intro">
+								调用TinyMCE的初始化方法，配置参数即可。下面是最简单的配置方式。
+							</p>
+
+							<div class="content-intro">
+								<div class="content-tinydiv">
+									<textarea class="content-tinyarea">
+										这个textarea，将被初始化为富文本编辑器，里面的文字将会被显示在编辑器内。
+									</textarea>
+								</div>
+								<div class="content-code" contenteditable="true">
+									<div class="code-box">
+										<xmp>tinymce.init({</xmp>
+										<xmp>	selector: '.content-tinyarea',</xmp>
+										<xmp>	width: '400px',</xmp>
+										<xmp>	height: '300px'</xmp>
+										<xmp>});</xmp>
+									</div>
+									<div class="code-run blue">运行代码</div>
+								</div>
+								
+							</div>
 							
 						</div>
 					</div>

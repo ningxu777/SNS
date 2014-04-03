@@ -19,7 +19,9 @@ ul,li{
 .blue{
 	background: #3366cc;
 }
-
+xmp{
+	line-height: 40px;
+}
 /****wrap****/
 body{
 	
@@ -88,7 +90,7 @@ body{
 	overflow: hidden;
 }
 .content-box{
-	width: 800px;
+	width: 1000px;
 	height: 700px;
 	margin: 70px auto 0;
 	overflow: auto;
@@ -151,8 +153,32 @@ body{
 .content-pic img{
 	width: 100%;
 }
-
-
+.content-code{
+	width: 356px;
+	height: 300px;
+	display: block;
+	float: right;
+	border: 1px solid #aaa;
+	padding: 15px;
+	position: relative;
+}
+.code-run{
+	position: absolute;
+	right: 15px;
+	bottom: 15px;
+	padding: 6px 12px;
+	border-radius: 2px;
+	color: #fff;
+	font-size: 13px;
+	cursor: pointer;
+}
+.content-tinydiv{
+	width: 400px;
+	float: left;
+}
+.content-tinyarea{
+	display: none;
+}
 /****footer****/
 .footer{
 	display: none;
