@@ -16,6 +16,11 @@
 			height: '200px'
 		});
 
+		tinymce.init({
+			selector: '.content-tinyarea1', 
+			width: '600px',
+			height: '200px'
+		});
 	</script>
 	<script src="js/index.js" type="text/javascript"></script>
 </head>
@@ -23,191 +28,221 @@
 	<div class="wrap">
 		<div class="header"></div>
 		<div class="main">
-			<div class="left">
-				<div class="menu">
-					<ul>
-						<li class="menu-li">
-							<div class="menu-li-title">目录</div>
-						</li>
-						<li class="menu-li">
-							<div class="menu-li-title">HTML编辑器概念</div>
-						</li>
-						<li class="menu-li">
-							<div class="menu-li-title">HTML编辑器原理介绍</div>
-						</li>
-						<li class="menu-li">
-							<div class="menu-li-title">TinyMCE的使用</div>
-							<ul>
-								<li class="menu-li-li">初始化配置</li>
-								<li class="menu-li-li">自定义皮肤</li>
-								<li class="menu-li-li">自定义插件开发</li>
-							</ul>
-						</li>
-						<li class="menu-li">
-							<div class="menu-li-title">同类产品对比</div>
-						</li>
-						<li class="menu-li">
-							<div class="menu-li-title">总结</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="right">
-				<div class="content page1 pt-page-current">
-					<div class="content-box">
-						<h1 class="content-title">目录</h1>
-						<div class="content-text">
-							<ul>
-								<li class="content-li">
-									<i class="content-li-icon red"></i>
-									<span class="content-li-span">HTML编辑器概念</span>
-								</li>
-								<li class="content-li">
-									<i class="content-li-icon blue"></i>
-									<span class="content-li-span">HTML编辑器原理介绍</span>
-								</li>
-								<li class="content-li">
-									<i class="content-li-icon red"></i>
-									<span class="content-li-span">TinyMCE的使用</span>
-								</li>
-								<li class="content-li">
-									<i class="content-li-icon blue"></i>
-									<span class="content-li-span">同类产品对比</span>
-								</li>
-								
-								<li class="content-li">
-									<i class="content-li-icon red"></i>
-									<span class="content-li-span">总结</span>
-								</li>
-							</ul>
-						</div>
+			<div class="screen hidden main1 main-page-current">富文本编辑器TinyMCE原理及应用</div>
+			<div class="screen hidden main2">
+				<div class="left">
+					<div class="menu">
+						<ul>
+							<li class="menu-li">
+								<div class="menu-li-title">目录</div>
+							</li>
+							<li class="menu-li">
+								<div class="menu-li-title">富文本编辑器概念</div>
+							</li>
+							<li class="menu-li">
+								<div class="menu-li-title">富文本编辑器原理介绍</div>
+							</li>
+							<li class="menu-li">
+								<div class="menu-li-title">TinyMCE的使用</div>
+								<ul>
+									<li class="menu-li-li">初始化配置</li>
+									<li class="menu-li-li">自定义皮肤</li>
+									<li class="menu-li-li">自定义插件开发</li>
+								</ul>
+							</li>
+							<li class="menu-li">
+								<div class="menu-li-title">同类产品对比</div>
+							</li>
+							<li class="menu-li">
+								<div class="menu-li-title">总结</div>
+							</li>
+						</ul>
 					</div>
 				</div>
-				<div class="content page2">
-					<div class="content-box">
-						<h1 class="content-title">一、HTML编辑器概念</h1>
-						<div class="content-text">
-							<p class="content-intro">是基于浏览器的用来编辑文字、插入图片、插入表格等的功能模块,类似于微软的word，不同之处在于，是在线并依赖于浏览器的。</p>
-							<p>主要应用于在线文章编辑、博客发布、留言板等地方。</p>
-							<p>一般情况以组件的形式被各个web项目调用。</p>
-							<p class="content-exam">
-								<strong class="content-bold">例子一：人人网日志编辑页</strong>
-								<a class="content-pic" href="http://blog.renren.com/blog/0/addBlog" target="_blank"><img src="cssimg/renren-blog.png"></a>
-								<strong class="content-bold">例子二：百度贴吧发帖页</strong>
-								<a class="content-pic" href="http://blog.renren.com/blog/0/addBlog" target="_blank"><img src="cssimg/baidu-tieba.png"></a>
-								<strong class="content-bold">例子三：人人网日志编辑页</strong>
-								<a class="content-pic" href="http://blog.renren.com/blog/0/addBlog" target="_blank"><img src="cssimg/kindEditor.png"></a>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="content page3">
-					<div class="content-box">
-						<h1 class="content-title">二、HTML编辑器原理介绍</h1>
-						<div class="content-text">
-							<p class="content-intro">网站上常见的用于编辑文字的有以下HTML标签</p>
-							<p class="content-intro">
-								<xmp><input type="text" name=""></xmp>
-								<input class="content-input" type="text" value="input标签功能比较简单，允许用户输入一行文字。一般不对其进行扩展。">
-							</p>
-							<p class="content-intro">
-								<xmp><textarea name=""></textarea></xmp>
-							</p>
-							<p class="content-intro">
-								<textarea class="content-textarea">textarea标签的语义是文本区，允许输入多行文本，假如要在textarea内对文本进行格式化（粗体、下划线、颜色等）或者插入图片，可以在文字中间加上自定义标签。[b]粗体文本[/b],[img]http://a.xnimg.cn/nx/core/theme/skin/mainframe/logo_new.png[/img]等。这些标签可以自定义。文本域的内容提交以后，再将这些标签转换为html标签显示在浏览器页面。
-								</textarea>
-							</p>
-							<p class="content-intro">
-								用textarea构造的文本编辑器有一个缺点：想要的效果无法在编辑的时候看到即不是"所见即所得"，并且textarea只支持一些普通字符的输入，并不支持html标签。
-							</p>
-							<p class="content-intro">
-								<xmp><div contenteditable="true"></div></xmp>
-							</p>
-							<div class="content-editDiv" contenteditable="true">
-								给元素加上contenteditable属性，元素便支持内容编辑，并且元素内部可以嵌套标签直接将修改的效果展示在编辑区内，实现所见即所得的效果。<span style="color: #dd4b39;">这段文字是红色的并且可以编辑</span>
+				<div class="right">
+					<div class="content hidden page1 pt-page-current">
+						<div class="content-box">
+							<h1 class="content-title">目录</h1>
+							<div class="content-text">
+								<ul>
+									<li class="content-li">
+										<i class="content-li-icon red"></i>
+										<span class="content-li-span">富文本编辑器概念</span>
+									</li>
+									<li class="content-li">
+										<i class="content-li-icon blue"></i>
+										<span class="content-li-span">富文本编辑器原理介绍</span>
+									</li>
+									<li class="content-li">
+										<i class="content-li-icon red"></i>
+										<span class="content-li-span">TinyMCE的使用</span>
+									</li>
+									<li class="content-li">
+										<i class="content-li-icon blue"></i>
+										<span class="content-li-span">同类产品对比</span>
+									</li>
+									
+									<li class="content-li">
+										<i class="content-li-icon red"></i>
+										<span class="content-li-span">总结</span>
+									</li>
+								</ul>
 							</div>
-							<p class="content-intro">
-								为了不影响当前document，通常情况下会在页面嵌入一个iframe元素作为编辑区，然后对这个iframe内的document（iframename.contentWindow.document）进行操作，本次要分享的TinyMCE富文本编辑器就是基于这个原理开发的。
-							</p>
-							<p class="content-intro">
-								<xmp><iframe name="" id=""></xmp>
-								<xmp>	<html></xmp>
-								<xmp>		<head></xmp>
-								<xmp>		</head></xmp>
-								<xmp>		<body contenteditable="true"></xmp>
-
-								<xmp>		</body></xmp>
-								<xmp>	</html></xmp>
-								<xmp></iframe></xmp>
-							</p>
 						</div>
 					</div>
-				</div>
-				<div class="content page4">
-					<div class="content-box">
-						<h1 class="content-title">三、TinyMCE的使用</h1>
-						<div class="content-text">
-							<p class="content-intro">1、初始化配置</p>
-							<p class="content-intro">
-								下载TinyMCE文件包：<a href="http://www.tinymce.com/" target="_blank">http://www.tinymce.com/</a>
-							</p>
-							<p class="content-intro">
-								head标签内放入以下代码：<xmp><script type="text/javascript" src="./tinymce/tinymce.min.js"></script></xmp>
-							</p>
-							<p class="content-intro">
-								调用TinyMCE的初始化方法，配置参数即可。下面是最简单的配置方式。
-							</p>
-
-							<div class="content-intro">
-								
+					<div class="content hidden page2">
+						<div class="content-box">
+							<h1 class="content-title">一、富文本编辑器概念</h1>
+							<div class="content-text">
+								<p class="content-intro">是基于浏览器的用来编辑文字、插入图片、插入表格等的功能模块,类似于微软的word，不同之处在于，是在线并依赖于浏览器的。</p>
+								<p>主要应用于在线文章编辑、博客发布、留言板等地方。</p>
+								<p>一般情况以组件的形式被各个web项目调用。</p>
+								<p class="content-exam">
+									<span class="content-pic">
+										<strong class="content-bold">例子一：人人网日志编辑页</strong>
+										<a href="http://blog.renren.com/blog/0/addBlog" target="_blank"><img src="cssimg/renren-blog.png"></a>
+									</span>
+									<span  class="content-pic">
+										<strong class="content-bold">例子二：百度贴吧发帖页</strong>
+										<a href="http://blog.renren.com/blog/0/addBlog" target="_blank"><img src="cssimg/baidu-tieba.png"></a>
+									</span>
+								</p>
 							</div>
-							
 						</div>
-						<div class="content-text">
-							<p class="content-intro">2、自定义皮肤</p>
-							<p class="content-intro">
-								下载TinyMCE文件包：<a href="http://www.tinymce.com/" target="_blank">http://www.tinymce.com/</a>
-							</p>
-							<p class="content-intro">
-								head标签内放入以下代码：<xmp><script type="text/javascript" src="./tinymce/tinymce.min.js"></script></xmp>
-							</p>
-							<p class="content-intro">
-								调用TinyMCE的初始化方法，配置参数即可。下面是最简单的配置方式。
-							</p>
+					</div>
+					<div class="content hidden page3">
+						<div class="content-box">
+							<h1 class="content-title">二、富文本编辑器原理介绍</h1>
+							<div class="content-text hidden textPage1 text-page-current">
+								<strong class="content-bold">1、普通文本编辑器</strong>
+								<p class="content-intro">网站上常见的用于编辑文字的有以下HTML标签</p>
+								<p class="content-intro">
+									<xmp><input type="text" name=""></xmp>
+									<input class="content-input" type="text" value="input标签功能比较简单，允许用户输入一行文字。一般不对其进行扩展。">
+								</p>
+								<p class="content-intro">
+									<xmp><textarea name=""></textarea></xmp>
+								</p>
+								<p class="content-intro">
+									<textarea class="content-textarea">textarea标签的语义是文本区，允许输入多行文本，假如要在textarea内对文本进行格式化（粗体、下划线、颜色等）或者插入图片，可以在文字中间加上自定义标签。[b]粗体文本[/b],[img]http://a.xnimg.cn/nx/core/theme/skin/mainframe/logo_new.png[/img]等。这些标签可以自定义。文本域的内容提交以后，再将这些标签转换为html标签显示在浏览器页面。
+									</textarea>
+								</p>
+								<p class="content-intro">
+									用textarea构造的文本编辑器有一个缺点：想要的效果无法在编辑的时候看到即不是"所见即所得"，并且textarea只支持一些普通字符的输入，并不支持html标签。
+								</p>
+							</div>
+							<div class="content-text hidden textPage2">
+								<strong class="content-bold">2、富文本编辑器</strong>
+								<p class="content-intro">
+									<xmp><div contenteditable="true"></div></xmp>
+								</p>
+								<div class="content-editDiv" contenteditable="true">
+									给元素加上contenteditable属性，元素便支持内容编辑，并且元素内部可以嵌套标签直接将修改的效果展示在编辑区内，实现所见即所得的效果。<span style="color: #dd4b39;">这段文字是红色的并且可以编辑</span>
+								</div>
+								<p class="content-intro">
+									为了不影响当前document，通常情况下会在页面嵌入一个iframe元素作为编辑区，然后对这个iframe内的document（iframename.contentWindow.document）进行操作，本次要分享的TinyMCE富文本编辑器就是基于这个原理开发的。
+								</p>
+								<p class="content-intro">
+									<xmp><iframe name="" id=""></xmp>
+									<xmp>	<html></xmp>
+									<xmp>		<head></xmp>
+									<xmp>		</head></xmp>
+									<xmp>		<body contenteditable="true"></xmp>
 
-							<div class="content-intro">
+									<xmp>		</body></xmp>
+									<xmp>	</html></xmp>
+									<xmp></iframe></xmp>
+								</p>
+							</div>
+							<div class="content-pageBar">
+								<div class="content-pageBar-item red">1</div>
+								<div class="content-pageBar-item blue">2</div>
+							</div>
+						</div>
+					</div>
+					<div class="content hidden page4">
+						<div class="content-box">
+							<h1 class="content-title">三、TinyMCE的使用</h1>
+							<div class="content-text hidden textPage1 text-page-current">
+								<strong class="content-bold">1、初始化配置</strong>
+								<p class="content-intro">
+									下载TinyMCE文件包：<a href="http://www.tinymce.com/" target="_blank">http://www.tinymce.com/</a>
+								</p>
+								<p class="content-intro">
+									head标签内放入以下代码：<xmp><script type="text/javascript" src="./tinymce/tinymce.min.js"></script></xmp>
+								</p>
+								<p class="content-intro">
+									调用TinyMCE的初始化方法，配置参数即可。下面是最简单的配置方式。
+								</p>
+
+								<div class="content-code" style="width:350px;height: 277px;float: left;margin-right: 10px;">
+									<div class="code-box">
+										<xmp>tinymce.init({</xmp>
+										<xmp>	selector: '.content-tinyarea1', </xmp>
+										<xmp>	width: '600px', </xmp>
+										<xmp>	height: '200px' </xmp>
+										<xmp>});</xmp>
+									</div>
+								</div>
 								<div class="content-tinydiv">
-									<textarea class="content-tinyarea">
+									<textarea class="content-tinyarea1">
 										这个textarea，将被初始化为富文本编辑器，里面的文字将会被显示在编辑器内。
 									</textarea>
 								</div>
-								<div class="content-code" contenteditable="true">
-									<div class="code-box">
-										<xmp>tinymce.init({</xmp>
-										<xmp>	selector: '.content-tinyarea',</xmp>
-										<xmp>	theme: 'modern',</xmp>
-										<xmp>	width: '998px',</xmp>
-										<xmp>	height: '300px',</xmp>
-										<xmp>	plugins: [</xmp>
-								        <xmp>      "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",</xmp>
-								        <xmp>      "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",</xmp>
-								        <xmp>      "save table contextmenu directionality emoticons template paste textcolor"</xmp>
-								   		<xmp>		],</xmp>
-								   		<xmp>	toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",</xmp>
-										<xmp>});</xmp>
+								
+							</div>
+							<div class="content-text hidden textPage2">
+								<p class="content-intro">2、自定义皮肤</p>
+								<p class="content-intro">
+									下载TinyMCE文件包：<a href="http://www.tinymce.com/" target="_blank">http://www.tinymce.com/</a>
+								</p>
+								<p class="content-intro">
+									head标签内放入以下代码：<xmp><script src="./tinymce/tinymce.min.js"></script></xmp>
+								</p>
+								<p class="content-intro">
+									调用TinyMCE的初始化方法，配置参数即可。下面是最简单的配置方式。
+								</p>
+
+								<div class="content-intro">
+									<div class="content-tinydiv">
+										<textarea class="content-tinyarea">
+											这个textarea，将被初始化为富文本编辑器，里面的文字将会被显示在编辑器内。
+										</textarea>
 									</div>
-									<div class="code-run blue">运行代码</div>
+									<div class="content-code" contenteditable="true">
+										<div class="code-box">
+											<xmp>tinymce.init({</xmp>
+											<xmp>	selector: '.content-tinyarea',</xmp>
+											<xmp>	theme: 'modern',</xmp>
+											<xmp>	width: '998px',</xmp>
+											<xmp>	height: '300px',</xmp>
+											<xmp>	plugins: [</xmp>
+									        <xmp>      "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",</xmp>
+									        <xmp>      "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",</xmp>
+									        <xmp>      "save table contextmenu directionality emoticons template paste textcolor"</xmp>
+									   		<xmp>		],</xmp>
+									   		<xmp>	toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",</xmp>
+											<xmp>});</xmp>
+										</div>
+										<div class="code-run blue">运行代码</div>
+									</div>
+									
 								</div>
 								
 							</div>
-							
+							<div class="content-pageBar">
+								<div class="content-pageBar-item red">1</div>
+								<div class="content-pageBar-item blue">2</div>
+							</div>
 						</div>
 					</div>
+					<div class="floatBar">全屏</div>
 				</div>
+				
 			</div>
+			<div class="screen hidden main3">谢谢！！！</div>
 		</div>
 		<div class="footer"></div>
-		<div class="floatBar">全屏</div>
 	</div>
 </body>
 </html>

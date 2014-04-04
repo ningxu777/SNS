@@ -43,22 +43,22 @@ $(function(){
 
 		runBtn: $('.code-run'),
 
-		run: function(){
-			var code = this.runBtn.siblings('.code-box').html();
-			code = code.replace(/\<xmp\>/g,'').replace(/\<\/xmp\>/g,'').replace(/<br>/g,'');
-			console.log(code);
-			
-			//tinymce.activeEditor = tinyMCE.activeEditor = null;
-			$('.mce-tinymce').remove();
-			$('.content-tinyarea').attr('id','');
-			eval(code);
+		show: function(){
 			var interval = setInterval(function(){
+				console.log($('.mce-tinymce').length);
 				if($('.mce-tinymce').length){
-					$('.mce-tinymce').show();
+					$('.mce-tinymce').css('visibility','visible');
 					clearInterval(interval);
 				}
 			},50);
-			
+		},
+
+		run: function(){
+			var code = this.runBtn.siblings('.code-box').html();
+			code = code.replace(/\<xmp\>/g,'').replace(/\<\/xmp\>/g,'').replace(/<br>/g,'');
+			$('.mce-tinymce').remove();
+			$('.content-tinyarea').attr('id','');
+			eval(code);
 		},
 
 		bindEvent: function(){
@@ -70,14 +70,58 @@ $(function(){
 
 		init: function(){
 			this.bindEvent();
+			this.show();
 		}
 	};
 	runCode.init();
 
-	//全屏切换
-	var page = 1;
-	var toTop = function(){
-		if(page == $('.content').length){
+	//开始、过程、结尾三主屏切换
+	var mainPage = 1;
+	var page = 0;
+
+	var mainToTop = function(){
+		if(mainPage == 2 && page != $('.content').length){
+			pageToTop();
+			return;
+		}
+		if(mainPage == $('.screen').length){
+			return;
+		}
+		var This = $('.main'+mainPage);
+		This.addClass('pt-page-moveToTop');
+		This.next().addClass('pt-page-moveFromBottom');
+		This.next().addClass('main-page-current');
+		setTimeout(function(){
+			This.removeClass('pt-page-moveToTop');
+			This.removeClass('main-page-current');
+			This.next().removeClass('pt-page-moveFromBottom');
+		},700);
+		mainPage++;
+	};
+	var mainToBottom = function(){
+		if(mainPage == 2 && page != 0){
+			pageToBottom();
+			return;
+		}
+		if(mainPage == 1){
+			return;
+		}
+		var This = $('.main'+mainPage);
+		This.addClass('pt-page-moveToBottom');
+		This.prev().addClass('pt-page-moveFromTop');
+		This.prev().addClass('main-page-current');
+		setTimeout(function(){
+			This.removeClass('pt-page-moveToBottom');
+			This.removeClass('main-page-current');
+			This.prev().removeClass('pt-page-moveFromTop');
+		},700);
+		mainPage--;
+	};
+
+	//page全屏切换
+	var pageToTop = function(){
+		if(page == 0){
+			menuToLeft();
 			return;
 		}
 		var This = $('.page'+page);
@@ -91,8 +135,9 @@ $(function(){
 		},700);
 		page++;
 	};
-	var toBottom = function(){
+	var pageToBottom = function(){
 		if(page == 1){
+			menuToRight();
 			return;
 		}
 		var This = $('.page'+page);
@@ -107,17 +152,63 @@ $(function(){
 		page--;
 	};
 
+	//目录展开收起
+	var menuToLeft = function(){
+		console.log(1);
+		$('.left').animate({width:'20%'},200);
+		$('.right').animate({left:'20%'},200);
+		page++;
+	};
+    var menuToRight = function(){
+    	$('.left').animate({width:'100%'},200);
+		$('.right').animate({left:'100%'},200);
+    	page--;
+    };
+
+
+
+	//textPage翻页
+	var textPage = 1;
+	var toLeft = function(parent){
+		if(textPage == parent.find('.content-text').length){
+			return;
+		}
+		var This = parent.find('.textPage'+textPage);
+		This.addClass('pt-page-moveToLeft');
+		This.next().addClass('pt-page-moveFromRight');
+		This.next().addClass('text-page-current');
+		setTimeout(function(){
+			This.removeClass('pt-page-moveToLeft');
+			This.removeClass('text-page-current');
+			This.next().removeClass('pt-page-moveFromRight');
+		},700);
+		textPage++;
+	};
+
+	$('.content-pageBar-item').bind('click', function(){
+		var index = $(this).index();
+		var list = $(this).parents('.content-box').find('.content-text');
+		for(var i = 0 ; i < list.length ; i++){
+			if(i == index){
+				$(list[i]).addClass('text-page-current');
+			}else{
+				$(list[i]).removeClass('text-page-current');
+			}
+		}
+		textPage = index + 1;
+	})
+
 	$(document).bind('keydown', function(e){
-		console.log(e.keyCode);
+		//console.log(e.keyCode);
 		var keyCode = e.keyCode;
 		if(keyCode == 27){
 			resize.smaller();
 		}else if(keyCode == 122){
 			resize.bigger();
 		}else if(keyCode == 38){ //shang
-			toBottom();
+			mainToBottom();
 		}else if(keyCode == 40){ //xia	
-			toTop();
+			mainToTop();
 		}else if(keyCode == 37){ //zuo	
 
 		}else if(keyCode == 39){ //you
