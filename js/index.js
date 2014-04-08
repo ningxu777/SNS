@@ -54,7 +54,7 @@ $(function(){
 		run: function(){
 			var code = this.runBtn.siblings('.code-box').html();
 			//code = code.replace(/\<xmp\>/g,'').replace(/\<\/xmp\>/g,'').replace(/<br>/g,'');
-			code = code.replace(/\<(.[^>]*)\>/g,'');
+			code = code.replace(/\<(.[^>]*)\>/g,'').replace(/\&nbsp;/g,'').replace(/\s/g,'').replace(/\n/g,'').replace(/\t/g,'').replace(/\r/g,'');
 			tinyMCE.activeEditor.remove();
 			//$('#content-tinyarea2_parent').remove();
 			//$('#content-tinyarea2').attr('aria-hidden','');
@@ -191,6 +191,7 @@ $(function(){
 			$('.left').animate({width:'20%'},time);
 			$('.menu').animate({width:'80%',marginTop:'130px'},time);
 			$('.menu-title').animate({fontSize:'25px',borderWidth:'0px',lineHeight:'40px'},time);
+			$('.menu-ul').animate({fontSize:'18px',marginTop:'10px'},time);
 			$('.menu-li').animate({lineHeight:'30px'},time);
 			$('.menu-li-icon').animate({width:'0px',marginRight:'0px'},time);
 			$('.right').animate({left:'20%'},time);
@@ -207,6 +208,7 @@ $(function(){
 	    	$('.left').animate({width:'100%'},time);
 	    	$('.menu').animate({width:'1000px',marginTop:'70px'},time);
 			$('.menu-title').animate({fontSize:'30px',borderWidth:'2px',lineHeight:'70px'},time);
+			$('.menu-ul').animate({fontSize:'25px',marginTop:'20px'},time);
 			$('.menu-li').animate({lineHeight:'50px'},time);
 			$('.menu-li-icon').animate({width:'14px',marginRight:'15px'},time);
 			$('.menu-li-ul').hide();
@@ -331,37 +333,47 @@ $(function(){
 	};
 	syncMenu.init();
 
+	(function(){
+		//加锁某些场景下禁用键盘及滚轮的事件绑定
+		var canGo = 1;
 
-	$(document).bind('keydown', function(e){
-		var keyCode = e.keyCode;
-		if(keyCode == 27){
-			resize.smaller();
-		}else if(keyCode == 122){
-			resize.bigger();
-		}else if(keyCode == 38){ //shang
-			turnPage.mainToBottom();
-		}else if(keyCode == 40){ //xia	
-			turnPage.mainToTop();
-		}else if(keyCode == 37){ //zuo	
+		$(document).bind('keydown', function(e){
+			if(canGo){
+				var keyCode = e.keyCode;
+				if(keyCode == 27){
+					resize.smaller();
+				}else if(keyCode == 122){
+					resize.bigger();
+				}else if(keyCode == 38){ //shang
+					turnPage.mainToBottom();
+				}else if(keyCode == 40){ //xia	
+					turnPage.mainToTop();
+				}else if(keyCode == 37){ //zuo	
 
-		}else if(keyCode == 39){ //you
+				}else if(keyCode == 39){ //you
 
-		}
-	}).bind('mousewheel', function(e,delta){
-		var delta = e.originalEvent.deltaY;
-		if(delta > 0){
-			turnPage.mainToTop();
-		}else{
-			turnPage.mainToBottom();
-		}
-		console.log(delta);
-	});
+				}
+			}
+		}).bind('mousewheel', function(e,delta){
+			if(canGo){
+				var delta = e.originalEvent.deltaY;
+				if(delta > 0){
+					turnPage.mainToTop();
+				}else{
+					turnPage.mainToBottom();
+				}
+				console.log(delta);
+			}
+		});
 
-	//打开关闭弹窗
-	$('.openPop').bind('click', function(){
-		$('.pop').show();
-	});
-	$('.closePop').bind('click', function(){
-		$('.pop').hide();
-	});
+		//打开关闭弹窗
+		$('.openPop').bind('click', function(){
+			$('.pop').show();
+			canGo = 0;
+		});
+		$('.closePop').bind('click', function(){
+			$('.pop').hide();
+			canGo = 1;
+		});
+	})();
 })
