@@ -10,18 +10,21 @@
 	<link href="css/animate.css" type="text/css" rel="stylesheet">
 	<script src="js/jquery-1.11.0.js" type="text/javascript"></script>
 	<script src="js/jquery-mousewheel.js" type="text/javascript"></script>
-	<script src="js/tinymce/tinymce.min.js" type="text/javascript"></script>
+	<script src="js/tiny_mce/tiny_mce.js" type="text/javascript"></script>
 	<script>
 		tinymce.init({
-			selector: '.content-tinyarea', 
-			width: '800px',
-			height: '200px'
+			mode: "exact",
+			elements: "content-tinyarea1",
+			width: '600px',
+			height: '250px'
 		});
 
-		tinymce.init({
-			selector: '.content-tinyarea1', 
+		window.tinyObj = tinymce.init({
+			theme: "advanced",
+			mode: "exact",
+			elements: "content-tinyarea2", 
 			width: '600px',
-			height: '200px'
+			height: '532px'
 		});
 	</script>
 	<script src="js/index.js" type="text/javascript"></script>
@@ -200,212 +203,157 @@
 						<div class="content-box">
 							<h1 class="content-title title2">三、TinyMCE的使用</h1>
 							<div class="content-text hidden textPage1 text-page-current">
-								<strong class="title3">1、TinyMCE简介</strong>
-								<p class="content-intro">
-									下载TinyMCE文件包：<a href="http://www.tinymce.com/" target="_blank">http://www.tinymce.com/</a>
-								</p>
-								<p class="content-intro">
-									head标签内放入以下代码：<xmp><script type="text/javascript" src="./tinymce/tinymce.min.js"></script></xmp>
-								</p>
-								<p class="content-intro">
-									调用TinyMCE的初始化方法，配置参数即可。下面是最简单的配置方式。
-								</p>
-
-								<div class="content-code" style="width:350px;height: 277px;float: left;margin-right: 10px;">
-									<div class="code-box">
-										<xmp>tinymce.init({</xmp>
-										<xmp>	selector: '.content-tinyarea1', </xmp>
-										<xmp>	width: '600px', </xmp>
-										<xmp>	height: '200px' </xmp>
-										<xmp>});</xmp>
-									</div>
+								<h3 class="title3">1、TinyMCE简介</h3>
+								<div class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">TinyMCE是一款轻量级的富文本编辑器,由javascript编写而成</span>
+								</div>				
+								<div class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">是根据LGPL license发布的自由软件（开源），可作为商业应用</span>
 								</div>
-								<div class="content-tinydiv">
-									<textarea class="content-tinyarea1">
-										这个textarea，将被初始化为富文本编辑器，里面的文字将会被显示在编辑器内。
-									</textarea>
+								<div class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">目前版本4.0.21，详细信息官网查看：<a href="http://www.tinymce.com" target="_blank">http://www.tinymce.com</a></span>
+								</div>
+								<div class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">源代码托管在github上，网址：<a href="https://github.com/tinymce/tinymce" target="_blank">https://github.com/tinymce/tinymce</a></span>
 								</div>
 								
 							</div>
 							<div class="content-text hidden textPage2">
 								<strong class="title3">2、初始化配置</strong>
-								<p class="content-intro">
-									下载TinyMCE文件包：<a href="http://www.tinymce.com/" target="_blank">http://www.tinymce.com/</a>
+								<p class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">下载TinyMCE文件包：<a href="http://www.tinymce.com/" target="_blank">http://www.tinymce.com/</a></span>
 								</p>
-								<p class="content-intro">
-									head标签内放入以下代码：<xmp><script type="text/javascript" src="./tinymce/tinymce.min.js"></script></xmp>
+								<p class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">head标签内放入以下代码：</span>
+									<xmp class="content-span"><script type="text/javascript" src="./tiny_mce/tiny_mce.js"></script></xmp>
 								</p>
-								<p class="content-intro">
-									调用TinyMCE的初始化方法，配置参数即可。下面是最简单的配置方式。
+								<p class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">调用TinyMCE的初始化方法，配置参数即可。下面是最简单的配置方式。
+									</span>
 								</p>
 
-								<div class="content-code" style="width:350px;height: 277px;float: left;margin-right: 10px;">
+								<div class="content-code" style="width:350px;height: 231px;float: left;margin-right: 10px;">
 									<div class="code-box">
 										<xmp>tinymce.init({</xmp>
-										<xmp>	selector: '.content-tinyarea1', </xmp>
+										<xmp>	mode: "exact",</xmp>
+										<xmp>	elements: "content-tinyarea1",</xmp>
 										<xmp>	width: '600px', </xmp>
 										<xmp>	height: '200px' </xmp>
 										<xmp>});</xmp>
 									</div>
 								</div>
 								<div class="content-tinydiv">
-									<textarea class="content-tinyarea1">
+									<textarea id="content-tinyarea1">
 										这个textarea，将被初始化为富文本编辑器，里面的文字将会被显示在编辑器内。
 									</textarea>
 								</div>
-								
+								<p class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">与textarea绑定的两点原因：</span>
+									<span class="content-span">对已有的内容修改，可先将内容放在textarea内，TinyMCE实例初始化完成后，再将内容取出放入编辑器。</span>
+									<span class="content-span">textarea里面可以写入标签，并且不会被解释。</span>
+								</p>
 							</div>
 							<div class="content-text hidden textPage3">
 								<p class="title3">3、自定义皮肤</p>
-								<p class="content-intro">
-									下载TinyMCE文件包：<a href="http://www.tinymce.com/" target="_blank">http://www.tinymce.com/</a>
-								</p>
-								<p class="content-intro">
-									head标签内放入以下代码：<xmp><script src="./tinymce/tinymce.min.js"></script></xmp>
-								</p>
-								<p class="content-intro">
-									调用TinyMCE的初始化方法，配置参数即可。下面是最简单的配置方式。
-								</p>
-
-								<div class="content-intro">
-									<div class="content-tinydiv">
-										<textarea class="content-tinyarea">
-											这个textarea，将被初始化为富文本编辑器，里面的文字将会被显示在编辑器内。
-										</textarea>
-									</div>
-									<div class="content-code" contenteditable="true">
-										<div class="code-box">
-											<xmp>tinymce.init({</xmp>
-											<xmp>	selector: '.content-tinyarea',</xmp>
-											<xmp>	theme: 'modern',</xmp>
-											<xmp>	width: '998px',</xmp>
-											<xmp>	height: '300px',</xmp>
-											<xmp>	plugins: [</xmp>
-									        <xmp>      "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",</xmp>
-									        <xmp>      "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",</xmp>
-									        <xmp>      "save table contextmenu directionality emoticons template paste textcolor"</xmp>
-									   		<xmp>		],</xmp>
-									   		<xmp>	toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",</xmp>
-											<xmp>});</xmp>
-										</div>
-										<div class="code-run bg-blue">运行代码</div>
-									</div>
-									
+								<div class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">当主题theme为advanced时，可以允许用户自定义皮肤（skin）</span>
 								</div>
-								
+								<div class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">skin的值是自定义的皮肤文件包的名称skin: "nx"</span>
+								</div>
+								<div class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">自定义皮肤的文件目录：./js/tiny_mce/themes/advanced/skins</span>
+									<span class="content-span">
+										<img src="./cssimg/skin-url.png" style="display: block;float: left;border: 1px solid #aaa">
+										<img src="./cssimg/skin.png" style="display: block;float: left;border: 1px solid #aaa;margin-left: 10px;">
+										<img src="./cssimg/skin-inner.png" style="display: block;float: left;border: 1px solid #aaa;margin: 20px 0 0 10px;">
+									</span>
+								</div>
+								<div class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span"><a href="#nogo" class="openPop">代码演示</a></span>
+								</div>
 							</div>
 							<div class="content-text hidden textPage4">
-								<p class="title3">4、官方插件</p>
-								<p class="content-intro">
-									下载TinyMCE文件包：<a href="http://www.tinymce.com/" target="_blank">http://www.tinymce.com/</a>
-								</p>
-								<p class="content-intro">
-									head标签内放入以下代码：<xmp><script src="./tinymce/tinymce.min.js"></script></xmp>
-								</p>
-								<p class="content-intro">
-									调用TinyMCE的初始化方法，配置参数即可。下面是最简单的配置方式。
-								</p>
-
-								<div class="content-intro">
-									<div class="content-tinydiv">
-										<textarea class="content-tinyarea">
-											这个textarea，将被初始化为富文本编辑器，里面的文字将会被显示在编辑器内。
-										</textarea>
-									</div>
-									<div class="content-code" contenteditable="true">
-										<div class="code-box">
-											<xmp>tinymce.init({</xmp>
-											<xmp>	selector: '.content-tinyarea',</xmp>
-											<xmp>	theme: 'modern',</xmp>
-											<xmp>	width: '998px',</xmp>
-											<xmp>	height: '300px',</xmp>
-											<xmp>	plugins: [</xmp>
-									        <xmp>      "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",</xmp>
-									        <xmp>      "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",</xmp>
-									        <xmp>      "save table contextmenu directionality emoticons template paste textcolor"</xmp>
-									   		<xmp>		],</xmp>
-									   		<xmp>	toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",</xmp>
-											<xmp>});</xmp>
-										</div>
-										<div class="code-run bg-blue">运行代码</div>
-									</div>
+								<h3 class="title3">4、官方插件</h3>
+								<div class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">编辑器所有的编辑功能（如，粗体，字体颜色，插入图片等）都被以插件的形式定义，供用户选择使用</span>
 									
-								</div>	
+								</div>
+								<div class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">绝大多数插件都有可以以按钮的形式放在工具栏，类似word的工具栏</span>
+								</div>
+								<div class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">使用某插件需要配置theme_advanced_buttons1: "undo,redo,bold,fontsizeselect"</span>
+								</div>
+								<div class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span"><a href="#nogo" class="openPop">代码演示</a></span>
+								</div>
 							</div>
 							<div class="content-text hidden textPage5">
-								<p class="title3">5、自定义插件</p>
-								<p class="content-intro">
-									下载TinyMCE文件包：<a href="http://www.tinymce.com/" target="_blank">http://www.tinymce.com/</a>
-								</p>
-								<p class="content-intro">
-									head标签内放入以下代码：<xmp><script src="./tinymce/tinymce.min.js"></script></xmp>
-								</p>
-								<p class="content-intro">
-									调用TinyMCE的初始化方法，配置参数即可。下面是最简单的配置方式。
-								</p>
-
-								<div class="content-intro">
-									<div class="content-tinydiv">
-										<textarea class="content-tinyarea">
-											这个textarea，将被初始化为富文本编辑器，里面的文字将会被显示在编辑器内。
-										</textarea>
+								<h3 class="title3">5、自定义插件</h3>
+								<div class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">TinyMCE提供了许多方法用来自定义插件，代码如下：</span>
+									<div class="content-codeShow">
+										<xmp>tinymce.create('tinymce.plugins.test', {</xmp>
+										<xmp>	init: function(ed){</xmp>
+										<xmp>		ed.addButton('testBtn', {</xmp>
+										<xmp>			title: '测试插件',</xmp>
+										<xmp>			cmd: 'nxImage',</xmp>
+										<xmp>			image: 'http://s.xnimg.cn/nx/ugc/blog/cssimg/addBlog/image.png'</xmp>
+										<xmp>		});</xmp>
+										<xmp>	},</xmp>
+										<xmp>});</xmp>
+										<xmp>tinymce.PluginManager.add('test', tinymce.plugins.test);</xmp>
 									</div>
-									<div class="content-code" contenteditable="true">
-										<div class="code-box">
-											<xmp>tinymce.init({</xmp>
-											<xmp>	selector: '.content-tinyarea',</xmp>
-											<xmp>	theme: 'modern',</xmp>
-											<xmp>	width: '998px',</xmp>
-											<xmp>	height: '300px',</xmp>
-											<xmp>	plugins: [</xmp>
-									        <xmp>      "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",</xmp>
-									        <xmp>      "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",</xmp>
-									        <xmp>      "save table contextmenu directionality emoticons template paste textcolor"</xmp>
-									   		<xmp>		],</xmp>
-									   		<xmp>	toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",</xmp>
-											<xmp>});</xmp>
-										</div>
-										<div class="code-run bg-blue">运行代码</div>
-									</div>
-									
+								</div>
+								<div class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">使用自定义的插件还需两步：</span><br>
+									<span class="content-span">配置插件引用plugins: "-test"。(理论上官方插件也要有这一步配置)</span>
+									<span class="content-span">将插件放入工具栏theme_advanced_buttons1: "undo,redo,bold,fontsizeselect,testBtn"</span>
+								</div>
+								<div class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">如不需要按钮，则按钮的定义部分和配置部分可省略</span>
+								</div>
+								<div class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span"><a href="#nogo" class="openPop">代码演示</a></span>
 								</div>
 							</div>
 							<div class="content-text hidden textPage6">
-								<p class="title3">6、public方法</p>
-								<p class="content-intro">
-									下载TinyMCE文件包：<a href="http://www.tinymce.com/" target="_blank">http://www.tinymce.com/</a>
-								</p>
-								<p class="content-intro">
-									head标签内放入以下代码：<xmp><script src="./tinymce/tinymce.min.js"></script></xmp>
-								</p>
-								<p class="content-intro">
-									调用TinyMCE的初始化方法，配置参数即可。下面是最简单的配置方式。
-								</p>
-
-								<div class="content-intro">
-									<div class="content-tinydiv">
-										<textarea class="content-tinyarea">
-											这个textarea，将被初始化为富文本编辑器，里面的文字将会被显示在编辑器内。
-										</textarea>
-									</div>
-									<div class="content-code" contenteditable="true">
-										<div class="code-box">
-											<xmp>tinymce.init({</xmp>
-											<xmp>	selector: '.content-tinyarea',</xmp>
-											<xmp>	theme: 'modern',</xmp>
-											<xmp>	width: '998px',</xmp>
-											<xmp>	height: '300px',</xmp>
-											<xmp>	plugins: [</xmp>
-									        <xmp>      "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",</xmp>
-									        <xmp>      "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",</xmp>
-									        <xmp>      "save table contextmenu directionality emoticons template paste textcolor"</xmp>
-									   		<xmp>		],</xmp>
-									   		<xmp>	toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",</xmp>
-											<xmp>});</xmp>
-										</div>
-										<div class="code-run bg-blue">运行代码</div>
-									</div>
-									
+								<h3 class="title3">6、public方法</h3>
+								<div class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">TinyMCE还提供很多公共方法，方便用户在创建插件、提交编辑内容或其他与编辑器的交互时使用。</span>
+									<span class="content-span">tinyMCE.activeEditor.getContent()：获取编辑器内容（带标签）</span>
+									<span class="content-span">tinyMCE.activeEditor.setContent(html)：获取编辑器内容（带标签）</span>
+									<span class="content-span">tinyMCE.activeEditor.getElement(): 获取绑定的textarea元素</span>
+									<span class="content-span">tinyMCE.activeEditor.onInit.add(func)：实例初始化完成后回调</span>
+									<span class="content-span">tinyMCE.activeEditor.execCommand(command,[user_interface],[value])：执行某方法，可以带参数</span>
+									<span class="content-span">tinyMCE.activeEditor.addCommand(pluginName,func)：为插件按钮添加click事件的回调</span>
+									<span class="content-span">tinyMCE.activeEditor.onClick()：编辑器添加click事件回调</span>
+								</div>
+								<div class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">接下来以一个插件为例说明一下public方法的使用-<a href="#nogo" class="openPop">代码演示</a></span>
 								</div>
 							</div>
 							<div class="content-pageBar">
@@ -435,18 +383,68 @@
 						<div class="content-box">
 							<h1 class="content-title title2">五、参考文献</h1>
 							<div class="content-text">
-								<p class="content-intro">是基于浏览器的用来编辑文字、插入图片、插入表格等的功能模块,类似于微软的word，不同之处在于，是在线并依赖于浏览器的。</p>
-								<p>主要应用于在线文章编辑、博客发布、留言板等地方。</p>
-								<p>一般情况以组件的形式被各个web项目调用。</p>
-								<p class="content-exam">
-									
+								<p class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">
+										TinyMCE官网：<a href="http://www.tinymce.com/" target="_blank">http://www.tinymce.com/</a>
+									</span>
+								</p>
+								<p class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">
+										开源中国社区：<a href="http://www.oschina.net/" target="_blank">http://www.oschina.net/</a>
+									</span>
+								</p>
+								<p class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">
+										github：<a href="http://www.tinymce.com/" target="_blank">https://github.com/</a>
+									</span>
+								</p>
+								<p class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">
+										tinymce指南：<a href="http://www.myexception.cn/web/1599203.html" target="_blank">http://www.myexception.cn/web/1599203.html</a>
+									</span>
+								</p>
+								<p class="content-p">
+									<i class="content-icon"></i>
+									<span class="content-span">
+										tinymce中文：<a href="http://hauy.net/TinyMceManual/" target="_blank">http://hauy.net/TinyMceManual/</a>
+									</span>
 								</p>
 							</div>
 						</div>
 					</div>
 					<div class="floatBar">全屏</div>
 				</div>
-				
+				<!--演示弹窗-->
+				<div class="pop">
+					<a href="#nogo" class="closePop">关闭</a>
+					<div class="pop-content">
+					<div class="content-tinydiv">
+						<textarea id="content-tinyarea2">
+							mode---/*textareas，specific_textareas(当textarea_trigger属性为true时)，exact*/<br><br>
+							elements---/*mode值为exact时*/<br><br>
+							theme---/*主题，默认值为*/<br><br>
+						</textarea>
+					</div>
+					<div class="content-code" contenteditable="true">
+						<div class="code-box">
+							<xmp>tinymce.init({</xmp>
+							<xmp>	mode: "exact",</xmp>
+							<xmp>	elements: "content-tinyarea2",</xmp>
+							<xmp>	theme: 'advanced',</xmp>
+							<xmp>	width: '600px',</xmp>
+							<xmp>	height: '532px',</xmp>
+					   		<xmp>	theme_advanced_buttons1:"undo,redo,bold,fontsizeselect,forecolor"</xmp>
+							<xmp>});</xmp>
+						</div>
+						<div class="code-run bg-blue" contenteditable="false">运行代码</div>
+					</div>
+					
+					</div>
+				</div>
 			</div>
 			<div class="screen hidden main3">
 				<div class="title1">

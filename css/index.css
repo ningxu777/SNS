@@ -133,6 +133,7 @@ xmp{
 	overflow: hidden;
 	position: relative;
 	margin: 5px 0;
+	clear: both;
 }
 .content-icon{
 	display: inline-block;
@@ -159,7 +160,7 @@ xmp{
 }
 .content-box{
 	width: 1000px;
-	height: 520px;
+	height: 720px;
 	margin: 70px auto 0;
 	overflow: hidden;
 	position: relative;
@@ -246,14 +247,48 @@ xmp{
 	width: 100%;
 	height: 410px;
 }
-.content-code{
-	width: 968px;
+
+/*****pop弹窗****/
+.pop{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #ebebeb;
+	display: none;
+	z-index: 11;
+}
+.closePop{
+	position: absolute;
+	top: 50;
+	right: 50;
+	font-size: 16px;
+}
+.pop-content{
+	width: 1210px;
 	height: auto;
+	margin: 50px auto 0;
+	overflow: hidden;
+}
+.content-tinydiv{
+	width: 602px;
+	height: auto;
+	overflow: hidden;
+	float: left;
+}
+.content-code{
+	width: 570px;
+	height: 500px;
+	overflow: auto;
 	display: block;
 	float: left;
+	margin-left: 3px;
 	border: 1px solid #aaa;
 	padding: 15px;
 	position: relative;
+	background: #fff;
 }
 .code-run{
 	position: absolute;
@@ -264,13 +299,6 @@ xmp{
 	color: #fff;
 	font-size: 13px;
 	cursor: pointer;
-}
-.content-tinydiv{
-	width: 400px;
-	float: left;
-}
-.content-tinyarea{
-	display: none;
 }
 /****footer****/
 .footer{

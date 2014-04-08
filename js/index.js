@@ -43,9 +43,9 @@ $(function(){
 
 		show: function(){
 			var interval = setInterval(function(){
-				console.log($('.mce-tinymce').length);
-				if($('.mce-tinymce').length){
-					$('.mce-tinymce').css('visibility','visible');
+				console.log($('.mceEditor').length);
+				if($('.mceEditor').length){
+					$('.mceEditor').css('visibility','visible');
 					clearInterval(interval);
 				}
 			},50);
@@ -53,9 +53,12 @@ $(function(){
 
 		run: function(){
 			var code = this.runBtn.siblings('.code-box').html();
-			code = code.replace(/\<xmp\>/g,'').replace(/\<\/xmp\>/g,'').replace(/<br>/g,'');
-			$('.mce-tinymce').remove();
-			$('.content-tinyarea').attr('id','');
+			//code = code.replace(/\<xmp\>/g,'').replace(/\<\/xmp\>/g,'').replace(/<br>/g,'');
+			code = code.replace(/\<(.[^>]*)\>/g,'');
+			tinyMCE.activeEditor.remove();
+			//$('#content-tinyarea2_parent').remove();
+			//$('#content-tinyarea2').attr('aria-hidden','');
+			console.log(code);
 			eval(code);
 		},
 
@@ -123,8 +126,13 @@ $(function(){
 		//page全屏切换
 		pageToTop: function(){
 			if(this.page == 0){
-				resize.smaller();
-				this.menuToLeft();
+				var leftLeft = $('.left').css('left');
+				if(leftLeft == '0px'){
+					this.menuToLeft();
+					
+				}else{
+					this.page++;
+				}
 				return;
 			}
 			var currDom = $('.page'+this.page);
@@ -149,8 +157,13 @@ $(function(){
 		},
 		pageToBottom: function(){
 			if(this.page == 1){
-				resize.smaller();
-				this.menuToRight();
+				var leftLeft = $('.left').css('left');
+				if(leftLeft == '0px'){
+					this.menuToRight();
+					
+				}else{
+					this.page--;
+				}
 				return;
 			}
 			var currDom = $('.page'+this.page);
@@ -163,7 +176,6 @@ $(function(){
 				currDom.prev().removeClass('pt-page-moveFromTop');
 			},700);
 			if(currDom.prev().find('.content-pageBar-item').length){
-				console.log(turnPage.page);
 				syncMenu.changeStyle(turnPage.page-2,0);
 				turnPage.textChangePage($(currDom.prev().find('.content-pageBar-item')[0]));
 			}else{
@@ -263,7 +275,6 @@ $(function(){
 	    	
 	    	$('.active').removeClass('active');
 	    	if(textPage+1){
-	    		console.log($('.menu-li-title')[page]);
 	    		$($($('.menu-li-title')[page]).siblings('.menu-li-ul').children('li')[textPage]).addClass('active');
 	    	}else{
 		    	$($('.menu-li-title')[page]).addClass('active');
@@ -344,5 +355,13 @@ $(function(){
 			turnPage.mainToBottom();
 		}
 		console.log(delta);
+	});
+
+	//打开关闭弹窗
+	$('.openPop').bind('click', function(){
+		$('.pop').show();
+	});
+	$('.closePop').bind('click', function(){
+		$('.pop').hide();
 	});
 })
