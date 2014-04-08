@@ -1,0 +1,22 @@
+tinymce.init({
+	mode: "exact",
+	elements: "content-tinyarea2",
+	theme: 'advanced',
+	width: '600px',
+	height: '532px',
+	plugins:'-test',
+	theme_advanced_buttons1:"undo,redo,bold,fontsizeselect,forecolor,testBtn"
+});
+tinymce.create('tinymce.plugins.test', {
+	init: function(ed){	
+	ed.addButton('testBtn', {
+		title: '²âÊÔ²å¼þ',
+		cmd: 'test',
+		image: 'http://a.xnimg.cn/imgpro/emotions/tab/ali.png'
+	});
+        ed.addCommand('test', function(){
+           alert(1);
+	});
+	},
+});
+tinymce.PluginManager.add('test', tinymce.plugins.test);
