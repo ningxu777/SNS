@@ -56,8 +56,6 @@ $(function(){
 			//code = code.replace(/\<xmp\>/g,'').replace(/\<\/xmp\>/g,'').replace(/<br>/g,'');
 			code = code.replace(/\<(.[^>]*)\>/g,'').replace(/\&nbsp;/g,'').replace(/\s/g,'').replace(/\n/g,'').replace(/\t/g,'').replace(/\r/g,'');
 			tinyMCE.activeEditor.remove();
-			//$('#content-tinyarea2_parent').remove();
-			//$('#content-tinyarea2').attr('aria-hidden','');
 			console.log(code);
 			eval(code);
 		},
