@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="keywords" content="web-ppt模板">
+	<meta name="description" content="自用web版PPT模板">
+	<title>web编辑器TinyMCE应用及原理</title>
+	<script src="js/jquery-1.11.0.js" type="text/javascript"></script>
+	<script src="js/tiny_mce/tiny_mce.js" type="text/javascript"></script>
+	<script>
+		$(function(){
+
+			tinymce.init({
+				mode: "exact",
+				elements: "testarea",
+				width: '700px',
+				height: '500px',
+				theme: 'advanced',
+				plugins: '-nxFloatBar',
+				theme_advanced_buttons1: 'undo,redo,bold,fontsizeselect,forecolor',
+			});
+			tinymce.create('tinymce.plugins.nxFloatBar', {
+				
+				//点击其他区域隐藏工具条
+				hideToolBar: function(ed){
+					$(document).bind("click", function(e){
+						var e = e || window.event;
+						var targetId = e.target.id;
+						var target = $(e.target);
+						var targetClass = $(e.target).attr('class');
+						if(targetId == "addBlog_floatBar" || targetId == "addBlog_floatBar_box" || targetClass == "addBlog-floatBar-item" || targetClass == "addBlog_floatBar_icon"){
+							//$("#addBlog_floatBar").show();
+						}else{
+							$("#addBlog_floatBar").hide();
+						}
+					});
+					//编辑器click事件
+					ed.onClick.add(function(){
+						$("#addBlog_floatBar").hide();
+					});
+				},
+				
+				//获取鼠标当前位置
+				getPosition: function(e){
+					var e = e || window.event; 
+					
+					//非ie鼠标位置支持e.pageX和e.pageY（距离文档左上角）
+					//ie鼠标位置为e.clientX(距离浏览器左上角，不是相对于文档左上角，即不包括滚动条滚出去的部分)，
+					return {
+						x: e.pageX || (e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft)),
+						y: e.pageY || (e.clientY + (document.documentElement.scrollTop || document.body.scrollTop))
+					}
+				},
+				
+				//确定弹窗位置
+				positionTo: function(e, ed){
+					var left = parseInt(this.getPosition(e).x);
+					var top = parseInt(this.getPosition(e).y) + 40;
+					left = left-120;
+					if(left <= 1){
+						left = 2;
+					}
+					if(left >= 305){
+						left = 305;
+					}
+					$("#addBlog_floatBar").css({top: top + "px", left: left + "px"});
+					$("#addBlog_floatBar").show();
+					this.hideToolBar(ed);
+				},
+
+				//弹窗
+				pop: function(ed, event){
+					this.positionTo(event, ed);
+				}
+
+				//创建自定义工具bold、fontSize、fontColor等
+				creatTools: function(ed){
+					var toolArr = [
+						{name: 'myBold', inline: 'span', styles: {fontWeight: 'bold'}}, //创建bold工具
+						{name: 'myColorBlack', inline: 'span', styles: {color: '#333'}}, //创建color：#000；工具
+						{name: 'myColorBlue', inline: 'span', styles: {color: '#227dc5'}}, //创建color：#00f；工具
+						{name: 'myColorGreen', inline: 'span', styles: {color: '#619a46'}}, //创建color：#0f0；工具
+						{name: 'myColorYellow', inline: 'span', styles: {color: '#daa025'}}, //创建color：#ff0；工具
+						{name: 'myColorRed', inline: 'span', styles: {color: '#e47474'}}, //创建color：#f00；工具
+						{name: 'myPosition', inline: 'span', styles: {color: ''}} //创建无效果工具，计算选中文本位置使用
+					];
+					// 创建自定义工具的方法
+					function regTool(n, i, s){
+						ed.formatter.register(n, {
+							inline: i,
+							styles: s
+						});
+					};
+					for(var i = 0; i < toolArr.length; i++){
+						var toolName = toolArr[i]['name'];
+						var toolInline = toolArr[i]['inline'];
+						var toolStyles = toolArr[i]['styles'];
+						regTool(toolName, toolInline, toolStyles);
+					}	
+				},
+
+				//工具绑定相应功能
+				addEvent: function(ed){
+					var This = this;
+					var myBold = $("#addBlog_floatBar_myBold");
+					var myColorBlack = $("#addBlog_floatBar_myColorBlack");
+					var myColorBlue = $("#addBlog_floatBar_myColorBlue");
+					var myColorGreen = $("#addBlog_floatBar_myColorGreen");
+					var myColorYellow = $("#addBlog_floatBar_myColorYellow");
+					var myColorRed = $("#addBlog_floatBar_myColorRed");
+					myBold.bind('click', function(e){
+						ed.formatter.toggle('myBold');
+					}).bind('mouseover', function(){
+						$(this).find('img').attr('src', 'http://s.xnimg.cn/nx/ugc/blog/cssimg/addBlog/bold-hover.png');
+					}).bind('mouseout', function(){
+						$(this).find('img').attr('src', 'http://s.xnimg.cn/nx/ugc/blog/cssimg/addBlog/bold.png');
+					});
+					myColorBlack.bind('click', function(){
+						ed.formatter.apply('myColorBlack');
+						$("#addBlog_floatBar").hide();
+					});
+					myColorBlue.bind('click', function(){
+						ed.formatter.apply('myColorBlue');
+						$("#addBlog_floatBar").hide();
+					});
+					myColorGreen.bind('click', function(){
+						ed.formatter.apply('myColorGreen');
+						$("#addBlog_floatBar").hide();
+					});
+					myColorYellow.bind('click', function(){
+						ed.formatter.apply('myColorYellow');
+						$("#addBlog_floatBar").hide();
+					});
+					myColorRed.bind('click', function(){
+						ed.formatter.apply('myColorRed');
+						$("#addBlog_floatBar").hide();
+					});
+
+				},
+
+				//create弹窗模板
+				buildHtml: function(){
+					var html = [];
+					html.push('<div id="addBlog_floatBar" style="display:none;">');
+					html.push('	<div style="height: auto;overflow: hidden;float: left;"><img src="http://s.xnimg.cn/nx/ugc/blog/cssimg/addBlog/floatBar-bg-top.png" style="display: block;float:left;"></div>');
+					html.push('	<div id="addBlog_floatBar_box">');
+					html.push('		<div id="addBlog_floatBar_myBold" title="字体加粗" style="cursor: pointer;background: none;width:16px;height:16px;margin:0 20px;" class="addBlog-floatBar-item"><img class="addBlog_floatBar_icon" src="http://s.xnimg.cn/nx/ugc/blog/cssimg/addBlog/bold.png" style="border: none;display: block;"></div>');
+					html.push('		<div id="addBlog_floatBar_myColorBlack" title="字体颜色-黑" style="cursor: pointer;width:16px;height:16px;" class="addBlog-floatBar-item"><img class="addBlog_floatBar_icon colorItem" data-mce-color="#333" src="http://s.xnimg.cn/nx/ugc/blog/cssimg/addBlog/black.png" style="border: none;display: block;"></div>');
+					html.push('		<div id="addBlog_floatBar_myColorBlue" title="字体颜色-蓝" style="cursor: pointer;width:16px;height:16px;" class="addBlog-floatBar-item"><img class="addBlog_floatBar_icon colorItem" data-mce-color="#227dc5" src="http://s.xnimg.cn/nx/ugc/blog/cssimg/addBlog/blue.png" style="border: none;display: block;"></div>');
+					html.push('		<div id="addBlog_floatBar_myColorGreen" title="字体颜色-绿" style="cursor: pointer;width:16px;height:16px;" class="addBlog-floatBar-item"><img class="addBlog_floatBar_icon colorItem" data-mce-color="#619a46" src="http://s.xnimg.cn/nx/ugc/blog/cssimg/addBlog/green.png" style="border: none;display: block;"></div>');
+					html.push('		<div id="addBlog_floatBar_myColorYellow" title="字体颜色-黄" style="cursor: pointer;width:16px;height:16px;" class="addBlog-floatBar-item"><img class="addBlog_floatBar_icon colorItem" data-mce-color="#daa025" src="http://s.xnimg.cn/nx/ugc/blog/cssimg/addBlog/yellow.png" style="border: none;display: block;"></div>');
+					html.push('		<div id="addBlog_floatBar_myColorRed" title="字体颜色-红" style="cursor: pointer;width:16px;height:16px;" class="addBlog-floatBar-item"><img class="addBlog_floatBar_icon colorItem" data-mce-color="#e47474" src="http://s.xnimg.cn/nx/ugc/blog/cssimg/addBlog/red.png" style="border: none;display: block;"></div>');
+					html.push(' </div>');
+					html.push('	<div style="height: auto;overflow: hidden;float: left;"><img src="http://s.xnimg.cn/nx/ugc/blog/cssimg/addBlog/floatBar-bg-bottom.png" style="display: block;float:left;"></div>');
+					html.push('</div>');
+					$("#floatBar_box").append(html.join(""));
+				},
+
+				init: function( ed ){
+					var This = this;
+					This.ed = ed;
+					This.buildHtml();
+					This.addEvent(ed);
+					ed.onInit.add(function(){ //编辑器实例化完成才有ed.formatter.register()方法
+						This.creatTools(ed);
+					});
+					//选中文本事件弹出工具条
+					ed.onMouseUp.add(function(scope, event){
+						var e = $.extend({}, event); //timeout make event object's attrs unknow in ie
+						setTimeout(function(){ //clear selection 有可能延迟造成选中某段后再次单击选中区扔被获取到。
+							var selection = ed.selection.getContent();
+							if(selection){
+								if(!(/<img/g.test(selection))){ //选中的内容不是图片
+									This.pop(ed, e);
+								}
+							}
+						},0);
+					});
+					ed.onKeyUp.add(function(scope, e){
+						if(e.keyCode == 8 || e.keyCode == 46){ //删除键时隐藏floatBar
+							if($('#addBlog_floatBar').length){
+								$('#addBlog_floatBar').hide();
+							}
+						}
+					});
+					
+				},
+			});
+			
+			//注册浮动工具条插件
+			tinymce.PluginManager.add( 'nxFloatBar', tinymce.plugins.nxFloatBar );
+		});
+	</script>
+
+
+	<style type="text/css">
+		#addBlog_floatBar{
+			display: none;
+			width: 257px;
+			height: auto;
+			overflow: hidden;
+			position: absolute;
+			top: -100px;
+			left: 100px;
+		}
+		#addBlog_floatBar_box{
+			height: auto;
+			overflow: hidden;
+			float: left;
+			padding: 5px 0;
+			width: 257px;
+			background: url(http://s.xnimg.cn/nx/ugc/blog/cssimg/addBlog/floatBar-bg-middle.png);
+		}
+		.addBlog-floatBar-item{
+			float: left;
+			margin-right: 20px;
+		}
+	</style>
+</head>
+<body style="background: #ebebeb;width: 100%;height: 100%;">
+	<div style="width:800px;height:auto;overflow: hidden;margin: 50px auto 0;position: relative;">
+		<textarea id="testarea" >
+			该浮动工具条插件开发主要用到以下方法：
+			1、tinymce.create(); /*创建插件方法*/
+			2、tinymce.PluginManager.add(); /*注册插件方法*/
+			3、tinymce.activeEditor.onInit.add(); /*初始化完成添加方法*/
+			4、tinymce.activeEditor.onMouseUp.add(); /*编辑器添加mouseup事件回调函数*/
+			5、tinymce.activeEditor.selection.getContent(); /*获取选区内容*/
+			6、tinymce.activeEditor.formatter.register(); /*创建格式化工具*/
+			7、tinymce.activeEditor.formatter.toggle(); /*切换格式化状态如加粗，不加粗*/
+			8、tinymce.activeEditor.formatter.apply();; /*应用某格式化*/
+		<div id="floatBar_box"></div>
+	</div>
+	
+</body>
+</html>
