@@ -165,12 +165,12 @@ xmp{
 	clear: both;
 	width: 80%;
 	margin: 0 0 0 20px;
-	padding: 15px;
+	padding: 3px 10px;
 	border: 1px solid #aaa;
 }
 .content-box{
 	width: 1000px;
-	height: 550px;
+	height: 595px;
 	margin: 25px auto 0;
 	overflow: hidden;
 	position: relative;
