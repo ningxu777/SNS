@@ -205,8 +205,8 @@ $(function(){
 	    	var time = 600;
 	    	$('.left').animate({width:'100%'},time);
 	    	$('.menu').animate({width:'1000px',marginTop:'70px'},time);
-			$('.menu-title').animate({fontSize:'30px',borderWidth:'2px',lineHeight:'70px'},time);
-			$('.menu-ul').animate({fontSize:'25px',marginTop:'20px'},time);
+			$('.menu-title').animate({fontSize:'43px',borderWidth:'2px',lineHeight:'70px'},time);
+			$('.menu-ul').animate({fontSize:'30px',marginTop:'20px'},time);
 			$('.menu-li').animate({lineHeight:'50px'},time);
 			$('.menu-li-icon').animate({width:'14px',marginRight:'15px'},time);
 			$('.menu-li-ul').hide();
@@ -339,7 +339,12 @@ $(function(){
 			if(canGo){
 				var keyCode = e.keyCode;
 				if(keyCode == 27){
-					resize.smaller();
+					var leftLeft = $('.left').css('left');
+					if(leftLeft == '0px'){
+						resize.bigger();
+					}else{
+						resize.smaller();
+					}
 				}else if(keyCode == 122){
 					resize.bigger();
 				}else if(keyCode == 38){ //shang

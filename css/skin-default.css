@@ -5,23 +5,23 @@
 
 /****标题****/
 .title1{
-	font-size: 88px;
+	font-size: 80px;
 	color: #000;
 	font-weight: bold;
 }
 .title2{
-	font-size: 30px;
+	font-size: 43px;
 	color: #333;
 	font-weight: normal;
 }
 .title3{
-	font-size: 20px;
+	font-size: 25px;
 	color: #666;
 	font-weight: bold;
 	line-height: 40px;
 }
 .title4{
-	font-size: 18px;
+	font-size: 20px;
 	color: #666;
 	font-weight: bold;
 	line-height: 30px;
@@ -29,11 +29,11 @@
 
 /****文本****/
 .text-body{
-	font-size: 18px;
+	font-size: 23px;
 	color: #999;
 }
 .text-menu{
-	font-size: 18px;
+	font-size: 20px;
 	color: #333;
 }
 /****背景****/
