@@ -1,0 +1,26 @@
+[OPTIONS]
+Compatibility=1.1 Or later
+Default Window=Main
+Default topic=D:\SNS\trunk\myPandora\css3\css3.htm
+Default font=微软雅黑,9,1
+Contents file=myPandora.hhc
+Index file=myPandora.hhk
+Display compile progress=Yes
+Language=0x804 中文(简体，中国)
+
+[WINDOWS]
+Main="","myPandora.hhc","myPandora.hhk","D:\SNS\trunk\myPandora\css3\css3.htm","D:\SNS\trunk\myPandora\css3\css3.htm",,,,,0x20,180,0x104E,[80,80,720,720],0x0,0x0,,,,,0
+
+[FILES]
+D:\SNS\trunk\myPandora\css3\css3.htm
+D:\SNS\trunk\myPandora\css3\css3.htm
+D:\SNS\trunk\myPandora\html5\html5.html
+D:\SNS\trunk\myPandora\html5\html5.html
+D:\SNS\trunk\myPandora\javascript\array.htm
+D:\SNS\trunk\myPandora\javascript\array.htm
+D:\SNS\trunk\myPandora\javascript\document.html
+D:\SNS\trunk\myPandora\javascript\document.html
+D:\SNS\trunk\myPandora\javascript\js.html
+D:\SNS\trunk\myPandora\javascript\js.html
+D:\SNS\trunk\myPandora\javascript\window.html
+D:\SNS\trunk\myPandora\javascript\window.html
