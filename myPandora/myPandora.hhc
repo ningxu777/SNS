@@ -1,16 +1,6 @@
 <html><head></head><body>
-<OBJECT type="text/site properties"><param name="Window Styles" value="0x227"></OBJECT>
+<OBJECT type="text/site properties"><param name="Window Styles" value="0x823"></OBJECT>
 <UL>
-<LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="css3">
-<PARAM NAME="ImageNumber" value="2">
-</OBJECT>
-<UL>
-<LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="CSS3">
-<PARAM NAME="Local" VALUE="D:\SNS\trunk\myPandora\css3\css3.htm">
-</OBJECT>
-</UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="html5">
 <PARAM NAME="ImageNumber" value="2">
@@ -22,16 +12,25 @@
 </OBJECT>
 </UL>
 <LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="css3">
+</OBJECT>
+<UL>
+<LI><OBJECT TYPE="text/sitemap">
+<PARAM NAME="Name" VALUE="CSS3">
+<PARAM NAME="Local" VALUE="D:\SNS\trunk\myPandora\css3\css3.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="javascript">
 <PARAM NAME="Local" VALUE="D:\SNS\trunk\myPandora\javascript\js.html">
 <PARAM NAME="ImageNumber" value="2">
 </OBJECT>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="Array构造器">
-<PARAM NAME="Local" VALUE="D:\SNS\trunk\myPandora\javascript\array.htm">
+<PARAM NAME="Name" VALUE="window对象">
+<PARAM NAME="Local" VALUE="D:\SNS\trunk\myPandora\javascript\window.html">
+<PARAM NAME="ImageNumber" value="2">
 </OBJECT>
-</UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
 <PARAM NAME="Name" VALUE="document对象">
@@ -40,8 +39,9 @@
 </UL>
 <UL>
 <LI><OBJECT TYPE="text/sitemap">
-<PARAM NAME="Name" VALUE="window对象">
-<PARAM NAME="Local" VALUE="D:\SNS\trunk\myPandora\javascript\window.html">
+<PARAM NAME="Name" VALUE="Array构造器">
+<PARAM NAME="Local" VALUE="D:\SNS\trunk\myPandora\javascript\array.htm">
 </OBJECT>
+</UL>
 </UL>
 </UL></body></html>

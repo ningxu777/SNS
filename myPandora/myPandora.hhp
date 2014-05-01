@@ -4,12 +4,12 @@ Default Window=Main
 Default topic=D:\SNS\trunk\myPandora\css3\css3.htm
 Default font=微软雅黑,9,1
 Contents file=myPandora.hhc
-Index file=myPandora.hhk
 Display compile progress=Yes
+Full-text search=Yes
 Language=0x804 中文(简体，中国)
 
 [WINDOWS]
-Main="","myPandora.hhc","myPandora.hhk","D:\SNS\trunk\myPandora\css3\css3.htm","D:\SNS\trunk\myPandora\css3\css3.htm",,,,,0x20,180,0x104E,[80,80,720,720],0x0,0x0,,,,,0
+Main="","myPandora.hhc","","D:\SNS\trunk\myPandora\css3\css3.htm","D:\SNS\trunk\myPandora\css3\css3.htm",,,,,0x420,180,0x10184E,[80,80,720,720],0x2000000,0x0,,,,,0
 
 [FILES]
 D:\SNS\trunk\myPandora\css3\css3.htm
